@@ -13,11 +13,18 @@ import java.security.Principal;
 @Controller
 public class MainController {
 
-    @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-    public String welcomePage(Model model) {
-        model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "This is welcome page!");
-        return "welcomePage";
+
+    @RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
+    public String welcomePage(Model model, Principal principal) {
+
+        //Check if user is connected
+        if (null == principal){
+            model.addAttribute("title", "Authentification");
+            return "main/loginPage";
+        }
+
+        return "redirect:/dashboard";
+
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -28,23 +35,19 @@ public class MainController {
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
 
-        return "adminPage";
+        return "main/adminPage";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Model model) {
 
-        return "loginPage";
-    }
 
-    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
-    public String logoutSuccessfulPage(Model model) {
-        model.addAttribute("title", "Logout");
-        return "logoutSuccessfulPage";
-    }
 
-    @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public String userInfo(Model model, Principal principal) {
+        //Check if user is connected
+        if (null == principal){
+            model.addAttribute("title", "Authentification");
+            return "main/loginPage";
+        }
 
         // After user login successfully.
         String userName = principal.getName();
@@ -55,8 +58,10 @@ public class MainController {
 
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
+        model.addAttribute("title", "Tableau de bord");
 
-        return "userInfoPage";
+
+        return "main/dashboard";
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
@@ -75,8 +80,15 @@ public class MainController {
 
         }
 
-        return "403Page";
+        return "main/403Page";
     }
+
+    @RequestMapping(value = "/admin/test", method = RequestMethod.GET)
+    public String loginPage(Model model) {
+        model.addAttribute("title", "admin page");
+        return "main/adminPage";
+    }
+
 
 
 }

@@ -20,7 +20,7 @@ public class AuthentificationApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(AuthentificationApplication.class, args);
-		String p = "123";
+		/*String p = "123";
 		String password = EncrytedPasswordUtils.encrytePassword(p);
 
 		System.out.println("===============DEBUT TRANSACTION=======================");
@@ -45,7 +45,7 @@ public class AuthentificationApplication {
 		userRoleRepository.save(new UserRole(user1,roleuser));
 		userRoleRepository.save(new UserRole(user2,roleuser));
 		//userRoleRepository.findAll().forEach(u->System.out.println(u.getAppUser().getUserName()+" -> "+u.getAppRole().getRoleName()));
-		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&FIN DE LA TRANSACTION&&&&&&&&&&&&&&&&&&&");
+		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&FIN DE LA TRANSACTION&&&&&&&&&&&&&&&&&&&");*/
 
 
 
