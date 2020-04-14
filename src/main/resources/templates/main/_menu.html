@@ -9,7 +9,8 @@
         </button>
         <!-- Brand -->
         <a th:href="@{/dashboard}" class="navbar-brand pt-0" >
-            <img src="../asset/brand/lo.png" class="navbar-brand-img" alt="...">
+            <img src="../../../asset/brand/lo.png" class="navbar-brand-img" alt="...">
+            <!--<img src="../../static/asset/brand/lo.png" class="navbar-brand-img" alt="..." th:src="{/asset/brand/lo.png}">-->
         </a>
 
         <!-- Collapse -->
@@ -23,24 +24,82 @@
                     </a>
                 </li>
 
-                <div sec:authorize="hasRole('ROLE_ADMIN')">
+               <!-- <div sec:authorize="hasRole('ROLE_ADMIN')">
                     <li  class="nav-item">
                         <a th:href="@{/admin/test}" class="nav-link" >
                             <i class="ni ni-key-25 text-blue"></i> Administration
+                        </a>
+                    </li>
+                </div>-->
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/produits}" class="nav-link">
+                            <i class="ni ni-diamond text-dark"></i> Produit
+                        </a>
+                    </li>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/conditionnements}" class="nav-link">
+                            <i class="ni ni-basket text-teal"></i> Conditionnement
+                        </a>
+                    </li>
+                </div>
+
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/clients}" class="nav-link">
+                            <i class="ni ni-pin-3 text-orange"></i> Client
+                        </a>
+                    </li>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/projets}" class="nav-link">
+                            <i class="ni ni-books text-success"></i> Projet
+                        </a>
+                    </li>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/receptions}" class="nav-link">
+                            <i class="ni ni-shop text-yellow"></i> Réception
                         </a>
                     </li>
                 </div>
 
 
 
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/entrepots}" class="nav-link">
+                            <i class="ni ni-building text-indigo"></i> Entrepôt
+                        </a>
+                    </li>
+                </div>
 
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/distributions}" class="nav-link">
+                            <i class="ni ni-send text-light"></i> Entreposage
+                        </a>
+                    </li>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/livraisons}" class="nav-link">
+                            <i class="ni ni-delivery-fast text-blue"></i> Enlevement
+                        </a>
+                    </li>
+                </div>
 
                 <!--<li class="nav-item">
-                    <a class="nav-link" href="./examples/maps.html">
-                        <i class="ni ni-pin-3 text-orange"></i> Maps
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="./examples/profile.html">
                         <i class="ni ni-single-02 text-yellow"></i> User profile
                     </a>
@@ -62,27 +121,36 @@
                 </li>-->
             </ul>
             <!-- Divider -->
-            <!--<hr class="my-3">
-            &lt;!&ndash; Heading &ndash;&gt;
-            <h6 class="navbar-heading text-muted">Documentation</h6>
-            &lt;!&ndash; Navigation &ndash;&gt;
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <hr class="my-3">
+
+            <!-- Heading -->
+
+            <h6 class="navbar-heading text-muted">Administration</h6>
+            <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-                        <i class="ni ni-spaceship"></i> Getting started
+                    <a th:href="@{/admin/users}" class="nav-link" >
+                        <i class="ni ni-spaceship"></i> Utilisateurs
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-                        <i class="ni ni-palette"></i> Foundation
+                    <a class="nav-link" th:href="@{/admin/roles}">
+                        <i class="ni ni-palette"></i> Roles
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-                        <i class="ni ni-ui-04"></i> Components
+                    <a class="nav-link" th:href="@{/admin/ressources}">
+                        <i class="ni ni-ui-04"></i> Ressources
                     </a>
                 </li>
-            </ul>-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/fournisseurs}">
+                        <i class="ni ni-ui-04"></i> Fournisseurs
+                    </a>
+                </li>
+            </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -101,7 +169,7 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                       <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="../asset/brand/team-4-800x800.jpg">
+                        <img alt="Image placeholder" src="../../../asset/brand/team-4-800x800.jpg">
                       </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <span th:utext="${#request.userPrincipal.name}" class="mb-0 text-sm  font-weight-bold"></span>

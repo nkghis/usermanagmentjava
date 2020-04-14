@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Authentification Bootstrap 4 Spring Boot.">
+    <meta name="author" content="Ghislain Nkagou">
+    <title th:utext="${title}"></title>
+
+    <!-- Include CSS block -->
+    <th:block th:include="/main/layout/block_css"></th:block>
+
+</head>
+<body>
+
+<!-- Include MENU block -->
+<th:block th:include="/main/_menu"></th:block>
+
+
+<!-- page content -->
+<br>
+
+<div class="card mx-auto" style="width: 50rem">
+
+    <div class="card-body">
+        <form th:action="@{/admin/gaches/save}" th:object="${magache}"  method="post">
+
+            <!-- Nom Enlevement Form Input -->
+
+            <input name="enlevement" th:value="${enlevement.operationId}" type="hidden"/>
+
+
+            <!-- Type de gache  select -->
+            <div class="form-group row">
+                <label for="idtypegache" class="col-sm-4 col-form-label text-md-right"><strong>Type de Gache</strong></label>
+
+                <div class="col-md-6">
+                    <select  id="idtypegache" name="typegache" class="select-type form-control" required >
+                        <option value="">-- Selectionner la Type de gache --</option>
+                        <option th:each="c:${typegaches}" th:value="${c.typegacheId}" th:text="${c.typegacheNom}"></option>
+                    </select>
+                    <!--<span th:if="${#fields.hasErrors('projets')}" th:errors="*{projets}"></span>-->
+                </div>
+            </div>
+
+            <!-- Quantité de gache -->
+            <div  class="form-group row">
+                <label for="quantitegache" class="col-sm-4 col-form-label text-md-right"><strong>Quantité</strong></label>
+
+                <div class="col-md-6">
+
+                    <input id="quantitegache" type="number" min="1" class="form-control" th:field="${magache.gacheQte}" required  autofocus>
+                    <!--<span th:if="${#fields.hasErrors('projet_nom')}" th:errors="*{projet_nom}"  th:class="help-block"></span>-->
+                    <div id="msg"></div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="btn" class="col-sm-4 col-form-label text-md-right"><strong></strong></label>
+
+                <div class="col-md-6">
+                    <button id="btn" type="submit" class="btn btn-primary">Enregister</button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+
+<!-- page content -->
+
+
+<!-- Include END MENU block -->
+<th:block th:include="/main/_end_menu"></th:block>
+
+
+
+<br/><br/>
+
+
+
+<!-- Include SCRIPT block -->
+<th:block th:include="/main/layout/block_script"></th:block>
+
+</body>
+</html>

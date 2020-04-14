@@ -21883,3 +21883,27 @@ OWN CSS
 {
     background-color: #825ee4;
 }
+
+/*material design icon test align middle with icon*/
+.material-icons, .icon-text, .icon-text-caps, .icon-text-tweaked {
+    vertical-align: middle;
+}
+.icon-text-caps, .icon-text-tweaked {
+    text-transform: uppercase;
+}
+.icon-text-tweaked {
+    position:relative;
+    top:1px;
+}
+
+.red{
+    color:red;
+}
+
+td.details-control {
+    background: url('../resources/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../resources/details_close.png') no-repeat center center;
+}

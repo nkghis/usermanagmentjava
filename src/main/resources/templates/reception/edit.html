@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Authentification Bootstrap 4 Spring Boot.">
+    <meta name="author" content="Ghislain Nkagou">
+    <title th:utext="${title}"></title>
+
+    <!-- Include CSS block -->
+    <th:block th:include="/main/layout/block_css"></th:block>
+
+    <!-- SELECT2 CSS block -->
+    <link rel = "stylesheet" type = "text/css" href = "../../static/vendor/select2/css/select2.min.css" th:href="@{/vendor/select2/css/select2.min.css}"/>
+
+</head>
+<body>
+
+<!-- Include MENU block -->
+<th:block th:include="/main/_menu"></th:block>
+
+
+<!-- page content -->
+<br>
+
+<div class="card mx-auto" style="width: 50rem">
+
+    <div class="card-body">
+        <form th:action="@{/admin/receptions/save}"   method="post">
+
+            <input type="hidden" th:field="${reception.operationId}">
+            <!-- Reference Interne Form Input -->
+            <div  class="form-group row">
+                <label for="operationReference" class="col-sm-4 col-form-label text-md-right"><strong>Référence</strong></label>
+
+                <div class="col-md-6">
+
+                    <input id="operationReference" type="text"  class="form-control" th:field="${reception.operationReference}" readonly >
+                    <!--<span th:if="${#fields.hasErrors('projet_nom')}" th:errors="*{projet_nom}"  th:class="help-block"></span>-->
+                </div>
+            </div>
+
+
+            <!-- Reference Fournisseur Interne Form Input -->
+            <div  class="form-group row">
+                <label for="operationReferenceFournisseur" class="col-sm-4 col-form-label text-md-right"><strong>Référence BL Fournisseur</strong></label>
+
+                <div class="col-md-6">
+
+                    <input id="operationReferenceFournisseur" type="text"  class="form-control" th:field="${reception.operationReferenceFournisseur}"  autofocus>
+                    <!--<span th:if="${#fields.hasErrors('projet_nom')}" th:errors="*{projet_nom}"  th:class="help-block"></span>-->
+                </div>
+            </div>
+
+            <!-- Projet  select -->
+            <div class="form-group row">
+                <label for="idprojet" class="col-sm-4 col-form-label text-md-right"><strong>Projet</strong></label>
+
+                <div class="col-md-6">
+                    <select th:field="${reception.projet}"  id="idprojet" name="projet" class="select-type form-control" multiple="multiple" required >
+                        <option value="">-- Selectionner le projet --;</option>
+                        <option th:each="c:${projets}" th:value="${c.projet_id}" th:text="${c.projet_nom}" th:selected="${c.projet_id == reception.projet}"></option>
+                    </select>
+                    <!--<span th:if="${#fields.hasErrors('projets')}" th:errors="*{projets}"></span>-->
+                </div>
+            </div>
+
+           <!-- &lt;!&ndash; Produit  select &ndash;&gt;
+            <div class="form-group row">
+                <label for="idproduit" class="col-sm-4 col-form-label text-md-right"><strong>Produit</strong></label>
+
+                <div class="col-md-6">
+                    <select th:field="${reception.produit}"  id="idproduit" name="produit" class="select-type form-control" required  >
+                        <option value="">&#45;&#45; Selectionner le produit &#45;&#45;</option>
+                        <option th:each="c:${produits}" th:value="${c.produit_id}" th:text="${c.produit_nom}" th:selected="${c.produit_id == reception.produit}"></option>
+                    </select>
+                    &lt;!&ndash;&lt;!&ndash;<span th:if="${#fields.hasErrors('produits')}" th:errors="*{produits}"></span>&ndash;&gt;&ndash;&gt;
+                </div>
+            </div>-->
+
+            <!-- Fournisseur Form Input -->
+            <div class="form-group row">
+                <label for="idfournisseur" class="col-sm-4 col-form-label text-md-right"><strong>Fournisseur</strong></label>
+
+                <div class="col-md-6">
+                    <select th:field="${reception.fournisseur}"   id="idfournisseur" name="fournisseur" class="select-type form-control" multiple="multiple" required  >
+                        <option value="">-- Selectionner le fournisseur --</option>
+                        <option th:each="c:${fournisseurs}" th:value="${c.fournisseur_id}" th:text="${c.fournisseur_nom}" th:selected="${c.fournisseur_id == reception.fournisseur}"></option>
+                    </select>
+                    <!--<span th:if="${#fields.hasErrors('produits')}" th:errors="*{produits}"></span>-->
+                </div>
+            </div>
+
+            <!-- Ressource Form Input -->
+            <div class="form-group row">
+                <label for="idressource" class="col-sm-4 col-form-label text-md-right"><strong>Receptionné par</strong></label>
+
+                <div class="col-md-6">
+                    <select th:field="${reception.ressource}"  id="idressource" name="ressource" class="select-type form-control" multiple="multiple"  required>
+                        <option value="">-- Selectionner la ressource --</option>
+                        <option th:each="c:${ressources}" th:value="${c.ressource_id}" th:text="${c.ressource_nom + ' ' + c.ressource_prenoms}" th:selected="${c.ressource_id == reception.ressource}"></option>
+                    </select>
+                    <!--<span th:if="${#fields.hasErrors('produits')}" th:errors="*{produits}"></span>-->
+                </div>
+            </div>
+
+            <!-- Quantité Form Input -->
+            <div  class="form-group row">
+                <label for="quantite" class="col-sm-4 col-form-label text-md-right"><strong>Quantité</strong></label>
+
+                <div class="col-md-6">
+
+                    <input id="quantite" type="number" min="1" class="form-control" th:field="${reception.operation_qte}" required  autofocus>
+                    <!--<span th:if="${#fields.hasErrors('projet_nom')}" th:errors="*{projet_nom}"  th:class="help-block"></span>-->
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="contact" class="col-sm-4 col-form-label text-md-right"><strong></strong></label>
+
+                <div class="col-md-6">
+                    <button id="contact" type="submit" class="btn btn-primary">Enregister</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+<!-- page content -->
+
+
+<!-- Include END MENU block -->
+<th:block th:include="/main/_end_menu"></th:block>
+
+
+
+<br/><br/>
+
+
+
+<!-- Include SCRIPT block -->
+<th:block th:include="/main/layout/block_script"></th:block>
+<!-- SELECT2 SCRIPT block -->
+<script src="../../static/vendor/select2/js/select2.min.js" th:src="@{/vendor/select2/js/select2.min.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#idprojet").select2({
+
+            placeholder: 'SELECTIONNER LE PROJET',
+            maximumSelectionLength: 1
+        });
+
+        $("#idfournisseur").select2({
+            placeholder: 'SELECTIONNER LE FOURNISSEUR',
+            maximumSelectionLength: 1
+        });
+
+        $("#idressource").select2({
+            placeholder: 'SELECTIONNER LA RESSOURCE',
+            maximumSelectionLength: 1
+        });
+    });
+</script>
+</body>
+</html>

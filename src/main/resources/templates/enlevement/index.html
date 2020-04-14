@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Authentification Bootstrap 4 Spring Boot.">
+    <meta name="author" content="Ghislain Nkagou">
+    <title th:utext="${title}"></title>
+
+    <!-- Include CSS block -->
+    <th:block th:include="/main/layout/block_css"></th:block>
+    <style>
+        .nav-tabs {
+            border-bottom:none;
+        }
+
+
+
+        .nav-tabs .nav-link.active {
+            background-color: #3be283;
+            border-bottom:#e2e2e2;
+            font-weight: bold;
+        }
+
+        .tab-pane.active .tab-pane-header {
+            padding:2rem;
+            background-color:#e2e2e2;
+            border-top-right-radius: .5rem;
+            border-top-left-radius: .5rem;
+            margin-bottom:1rem;
+        }
+
+        .tab-pane:first-child .tab-pane-header {
+            border-top-left-radius: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Include MENU block -->
+<th:block th:include="/main/_menu"></th:block>
+
+
+<!-- page content -->
+<br>
+<!-- Message pour succes de l operation -->
+<p class="alert alert-success text-center h6"   role="alert" th:text="${messagegache}" th:if="${messagegache}"></p>
+<p class="alert alert-success text-center h6"   role="alert" th:text="${messageenlevement}" th:if="${messageenlevement}"></p>
+<p class="alert alert-success text-center h6"   role="alert" th:text="${messageretour}" th:if="${messageretour}"></p>
+<div class="card mx-auto" style="width: 80rem">
+
+    <!--<div class="card-header">
+
+    </div>-->
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-enlevement-tab" data-toggle="tab" href="#nav-enlevement" role="tab" aria-controls="nav-enlevement" aria-selected="true">Gestion des Enlevements</a>
+                        <a class="nav-item nav-link" id="nav-gache-tab" data-toggle="tab" href="#nav-gache" role="tab" aria-controls="nav-gache" aria-selected="false">Gestion des Gaches</a>
+                        <a class="nav-item nav-link" id="nav-retour-tab" data-toggle="tab" href="#nav-retour" role="tab" aria-controls="nav-retour" aria-selected="false">Gestion des Retours</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-enlevement" role="tabpanel" aria-labelledby="nav-enlevement-tab">
+                        <div class="table-responsive">
+                            <table class="table table-sm display" id="index-enlevement-true" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <!--<th></th>-->
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Ref</th>
+                                    <th class="text-center">Qte Restante</th>
+                                    <th class="text-center">Qte Verse</th>
+                                    <th class="text-center">Projet</th>
+                                    <th class="text-center">Produit</th>
+                                    <th class="text-center">Entrepôt</th>
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Est Livrable</th>
+                                    <th class="text-center">Operation Id</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                </thead>
+
+                                <tfoot>
+                                <!--<th></th>-->
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Ref</th>
+                                <th class="text-center">Qte Restante</th>
+                                <th class="text-center">Qte Verse</th>
+                                <th class="text-center">Projet</th>
+                                <th class="text-center">Produit</th>
+                                <th class="text-center">Entrepôt</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Est Livrable</th>
+                                <th class="text-center">Operation Id</th>
+                                <th class="text-center">Action</th>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-gache" role="tabpanel" aria-labelledby="nav-gache-tab">
+                        <div class="table-responsive">
+                            <table class="table  table-sm display" id="index-gache" style="width:100%">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <!--<th></th>-->
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Ref</th>
+                                    <th class="text-center">Qte Livrée</th>
+                                    <th class="text-center">Projet</th>
+                                    <th class="text-center">Produit</th>
+                                    <th class="text-center">Motif</th>
+                                    <th class="text-center">Ressource</th>
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                </thead>
+
+                                <tfoot>
+                                <!--<th></th>-->
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Ref</th>
+                                <th class="text-center">Qte Livrée</th>
+                                <th class="text-center">Projet</th>
+                                <th class="text-center">Produit</th>
+                                <th class="text-center">Motif</th>
+                                <th class="text-center">Ressource</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Action</th>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-retour" role="tabpanel" aria-labelledby="nav-retour-tab">
+                        <div class="table-responsive">
+                            <table class="table table-sm display" id="index-retour" style="width:100%">
+                                <thead class="thead-light">
+                                <tr>
+                                    <!--<th></th>-->
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Ref</th>
+                                    <th class="text-center">Qte Livrée</th>
+                                    <th class="text-center">Projet</th>
+                                    <th class="text-center">Produit</th>
+                                    <th class="text-center">Motif</th>
+                                    <th class="text-center">Ressource</th>
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                </thead>
+
+                                <tfoot>
+                                <!--<th></th>-->
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Ref</th>
+                                <th class="text-center">Qte Livrée</th>
+                                <th class="text-center">Projet</th>
+                                <th class="text-center">Produit</th>
+                                <th class="text-center">Motif</th>
+                                <th class="text-center">Ressource</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Action</th>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- page content -->
+
+
+<!-- Include END MENU block -->
+<th:block th:include="/main/_end_menu"></th:block>
+
+
+
+<br/><br/>
+
+
+
+<!-- Include SCRIPT block -->
+<th:block th:include="/main/layout/block_script"></th:block>
+<script>
+
+    $(document).ready( function () {
+        var table = $('#index-enlevement-true').DataTable({
+
+            "sAjaxSource": "/admin/livraisons/all",
+            "sAjaxDataProp": "",
+            "order": [ 0, "desc" ],
+            "aoColumnDefs": [
+                {
+                    "bSearchable": false,
+                    "bVisible": false,
+                    "aTargets": [0]
+                },
+
+                {
+                    "bSearchable": false,
+                    "bVisible": false,
+                    "aTargets": [8]
+                },
+
+                {
+                    "bSearchable": false,
+                    "bVisible": false,
+                    "aTargets": [9]
+                },
+
+                {
+                    "bSearchable": false,
+                    "bVisible": false,
+                    "aTargets": [7]
+                },
+            ],
+            "aoColumns": [
+
+                { "mData": "entreposageId"},
+                { "mData": "entreposageReference" },
+                { "mData": "quantiteRestante" },
+                { "mData": "quantiteVerse" },
+                { "mData": "projetNom" },
+                { "mData": "produitNom" },
+                { "mData": "entrepotNom" },
+                {
+                    "mData": "entreposageDate" ,
+                    "mRender": function ( data, type, full ) {
+                        var d = new Date();
+                        return d.getDate() + "/"+  (d.getMonth() + 1) + "/" + d.getFullYear()+ " "+ d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+                    }
+                },
+
+                { "mData": "estLivrable" },
+                { "mData": "operationId" },
+
+                {
+                    "mData": null,
+                    "bSortable": false,
+                    "mRender": function(data, type, full) {
+                        return '<div class="dropdown">'+
+                            '                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
+                            '                          <i class="fas fa-ellipsis-v"></i>'+
+                            '                        </a>'+
+                            '                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">'+
+                            '                          <a class="dropdown-item" href=/admin/livraisons/distributions/'+ full.entreposageId+'>'+'Livrer'+'</a>'+
+                            '                        </div>'
+                    }
+                }
+            ],
+
+
+            language: {
+                /*url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json'*/
+                sProcessing: "Traitement en cours...",
+                sSearch: "Rechercher&nbsp;:",
+                sLengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
+                sInfo: "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                sInfoEmpty: "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
+                sInfoFiltered: "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                sInfoPostFix: "",
+                sLoadingRecords: "Chargement en cours...",
+                sZeroRecords: "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                sEmptyTable: "Aucune donn&eacute;e disponible dans le tableau",
+                oPaginate: {
+                    sFirst: "Premier",
+                    sPrevious: "Pr&eacute;c&eacute;dent",
+                    sNext: "Suivant",
+                    sLast: "Dernier"
+                },
+                oAria: {
+                    sSortAscending: ": activer pour trier la colonne par ordre croissant",
+                    sSortDescending: ": activer pour trier la colonne par ordre d&eacute;croissant"
+                }
+            },
+
+
+        })
+    });
+    $(document).ready( function () {
+        var table = $('#index-gache').DataTable({
+
+            "sAjaxSource": "/admin/gaches",
+            "sAjaxDataProp": "",
+            "order": [ 0, "desc" ],
+            "aoColumnDefs": [
+                {
+                    "bSearchable": false,
+                    "bVisible": false,
+                    "aTargets": [0]
+                }
+
+            ],
+            "aoColumns": [
+
+                { "mData": "operationId"},
+                { "mData": "operationReference" },
+                { "mData": "qteOperation" },
+                { "mData": "projetNom" },
+                { "mData": "produitNom" },
+                { "mData": "motifNom" },
+                { "mData": "ressourceNom" },
+                {
+                    "mData": "operationDate" ,
+                    "mRender": function ( data, type, full ) {
+                        var d = new Date();
+                        return d.getDate() + "/"+  (d.getMonth() + 1) + "/" + d.getFullYear()+ " "+ d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+                    }
+                },
+
+
+                {
+                    "mData": null,
+                    "bSortable": false,
+                    "mRender": function(data, type, full) {
+                        return '<div class="dropdown">'+
+                            '                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
+                            '                          <i class="fas fa-ellipsis-v"></i>'+
+                            '                        </a>'+
+                            '                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">'+
+                            '                          <a class="dropdown-item" href=/admin/gaches/'+ full.operationId+'>'+'Attribuer'+'</a>'+
+                            '                        </div>'
+                    }
+                }
+            ],
+
+
+            language: {
+                /*url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json'*/
+                sProcessing: "Traitement en cours...",
+                sSearch: "Rechercher&nbsp;:",
+                sLengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
+                sInfo: "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                sInfoEmpty: "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
+                sInfoFiltered: "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                sInfoPostFix: "",
+                sLoadingRecords: "Chargement en cours...",
+                sZeroRecords: "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                sEmptyTable: "Aucune donn&eacute;e disponible dans le tableau",
+                oPaginate: {
+                    sFirst: "Premier",
+                    sPrevious: "Pr&eacute;c&eacute;dent",
+                    sNext: "Suivant",
+                    sLast: "Dernier"
+                },
+                oAria: {
+                    sSortAscending: ": activer pour trier la colonne par ordre croissant",
+                    sSortDescending: ": activer pour trier la colonne par ordre d&eacute;croissant"
+                }
+            },
+
+
+        })
+    });
+    $(document).ready( function () {
+        var table = $('#index-retour').DataTable({
+
+            "sAjaxSource": "/admin/retours",
+            "sAjaxDataProp": "",
+            "order": [ 0, "desc" ],
+            "aoColumnDefs": [
+                {
+                    "bSearchable": false,
+                    "bVisible": false,
+                    "aTargets": [0]
+                }
+
+            ],
+            "aoColumns": [
+
+                { "mData": "operationId"},
+                { "mData": "operationReference" },
+                { "mData": "qteOperation" },
+                { "mData": "projetNom" },
+                { "mData": "produitNom" },
+                { "mData": "motifNom" },
+                { "mData": "ressourceNom" },
+                {
+                    "mData": "operationDate" ,
+                    "mRender": function ( data, type, full ) {
+                        var d = new Date();
+                        return d.getDate() + "/"+  (d.getMonth() + 1) + "/" + d.getFullYear()+ " "+ d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+                    }
+                },
+
+
+                {
+                    "mData": null,
+                    "bSortable": false,
+                    "mRender": function(data, type, full) {
+                        return '<div class="dropdown">'+
+                            '                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
+                            '                          <i class="fas fa-ellipsis-v"></i>'+
+                            '                        </a>'+
+                            '                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">'+
+                            '                          <a class="dropdown-item" href=/admin/retours/'+ full.operationId+'>'+'Attribuer'+'</a>'+
+                            '                        </div>'
+                    }
+                }
+            ],
+
+
+            language: {
+                /*url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json'*/
+                sProcessing: "Traitement en cours...",
+                sSearch: "Rechercher&nbsp;:",
+                sLengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
+                sInfo: "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                sInfoEmpty: "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
+                sInfoFiltered: "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                sInfoPostFix: "",
+                sLoadingRecords: "Chargement en cours...",
+                sZeroRecords: "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                sEmptyTable: "Aucune donn&eacute;e disponible dans le tableau",
+                oPaginate: {
+                    sFirst: "Premier",
+                    sPrevious: "Pr&eacute;c&eacute;dent",
+                    sNext: "Suivant",
+                    sLast: "Dernier"
+                },
+                oAria: {
+                    sSortAscending: ": activer pour trier la colonne par ordre croissant",
+                    sSortDescending: ": activer pour trier la colonne par ordre d&eacute;croissant"
+                }
+            },
+
+
+        })
+    });
+
+    $(document).ready(function() {
+        // executes when HTML-Document is loaded and DOM is ready
+
+
+        if (location.hash !== '') $('a[href="' + location.hash + '"]').tab('show');
+        return $('a[data-toggle="tab"]').on('shown', function(e) {
+            return location.hash = $(e.target).attr('href').substr(1);
+        });
+
+
+// document ready
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 package ics.ci.authentification.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "App_User", //
@@ -21,6 +23,9 @@ public class AppUser {
 
     @Column(name = "Enabled", length = 1, nullable = false)
     private boolean enabled;
+
+    @OneToMany(mappedBy = "appUser")
+    private Collection<UserRole> userRoles;
 
     public AppUser() {
         super();
@@ -62,5 +67,13 @@ public class AppUser {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Collection<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }
