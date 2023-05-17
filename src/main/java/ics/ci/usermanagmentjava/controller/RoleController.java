@@ -1,7 +1,7 @@
-package ics.ci.mutuelle.controller;
+package ics.ci.usermanagmentjava.controller;
 
-import ics.ci.mutuelle.entity.AppRole;
-import ics.ci.mutuelle.repository.RoleRepository;
+import ics.ci.usermanagmentjava.entity.AppRole;
+import ics.ci.usermanagmentjava.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;

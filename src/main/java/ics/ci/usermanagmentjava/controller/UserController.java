@@ -1,10 +1,10 @@
-package ics.ci.mutuelle.controller;
+package ics.ci.usermanagmentjava.controller;
 
-import ics.ci.mutuelle.entity.*;
-import ics.ci.mutuelle.repository.RoleRepository;
-import ics.ci.mutuelle.repository.UserRepository;
-import ics.ci.mutuelle.repository.UserRoleRepository;
-import ics.ci.mutuelle.utils.EncrytedPasswordUtils;
+import ics.ci.usermanagmentjava.entity.*;
+import ics.ci.usermanagmentjava.repository.RoleRepository;
+import ics.ci.usermanagmentjava.repository.UserRepository;
+import ics.ci.usermanagmentjava.repository.UserRoleRepository;
+import ics.ci.usermanagmentjava.utils.EncrytedPasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,8 +1,7 @@
-package ics.ci.mutuelle.repository;
+package ics.ci.usermanagmentjava.repository;
 
-import ics.ci.mutuelle.entity.AppUser;
+import ics.ci.usermanagmentjava.entity.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<AppUser, Long> {
     AppUser findByUserName(String userName);

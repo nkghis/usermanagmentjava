@@ -1,23 +1,16 @@
-package ics.ci.mutuelle;
+package ics.ci.usermanagmentjava;
 
 
-import ics.ci.mutuelle.entity.AppRole;
-import ics.ci.mutuelle.entity.AppUser;
-import ics.ci.mutuelle.entity.UserRole;
-import ics.ci.mutuelle.repository.RoleRepository;
-import ics.ci.mutuelle.repository.UserRepository;
-import ics.ci.mutuelle.repository.UserRoleRepository;
-import ics.ci.mutuelle.utils.EncrytedPasswordUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class MutuelleApplication {
+public class UsermanagmentjavaApplication {
 
 	public static void main(String[] args) {
 
-		ApplicationContext ctx = SpringApplication.run(MutuelleApplication.class, args);
+		ApplicationContext ctx = SpringApplication.run(UsermanagmentjavaApplication.class, args);
 
 
 

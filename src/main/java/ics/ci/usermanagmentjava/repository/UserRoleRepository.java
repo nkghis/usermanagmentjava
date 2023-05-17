@@ -1,6 +1,6 @@
-package ics.ci.mutuelle.repository;
+package ics.ci.usermanagmentjava.repository;
 
-import ics.ci.mutuelle.entity.UserRole;
+import ics.ci.usermanagmentjava.entity.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRoleRepository extends JpaRepository<UserRole, Long> {

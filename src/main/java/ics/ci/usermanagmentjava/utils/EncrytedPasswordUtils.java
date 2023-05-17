@@ -1,4 +1,4 @@
-package ics.ci.mutuelle.utils;
+package ics.ci.usermanagmentjava.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

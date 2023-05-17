@@ -1,4 +1,4 @@
-package ics.ci.mutuelle.entity;
+package ics.ci.usermanagmentjava.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

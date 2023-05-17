@@ -1,6 +1,6 @@
-package ics.ci.mutuelle.config;
+package ics.ci.usermanagmentjava.config;
 
-import ics.ci.mutuelle.service.impl.UserDetailsServiceImpl;
+import ics.ci.usermanagmentjava.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

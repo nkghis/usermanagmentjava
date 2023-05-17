@@ -1,4 +1,4 @@
-package ics.ci.mutuelle;
+package ics.ci.usermanagmentjava;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MutuelleApplicationTests {
+public class UsermanagmentjavaApplicationTests {
 
 	@Test
 	public void contextLoads() {

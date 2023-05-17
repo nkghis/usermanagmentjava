@@ -1,9 +1,8 @@
-package ics.ci.mutuelle.service.impl;
+package ics.ci.usermanagmentjava.service.impl;
 
-import ics.ci.mutuelle.dao.AppRoleDAO;
-import ics.ci.mutuelle.dao.AppUserDAO;
-import ics.ci.mutuelle.entity.AppUser;
-import org.springframework.beans.factory.annotation.Autowired;
+import ics.ci.usermanagmentjava.dao.AppRoleDAO;
+import ics.ci.usermanagmentjava.dao.AppUserDAO;
+import ics.ci.usermanagmentjava.entity.AppUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,6 +1,6 @@
-package ics.ci.mutuelle.dao;
+package ics.ci.usermanagmentjava.dao;
 
-import ics.ci.mutuelle.entity.AppUser;
+import ics.ci.usermanagmentjava.entity.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

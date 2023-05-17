@@ -1,4 +1,4 @@
-package ics.ci.mutuelle.utils;
+package ics.ci.usermanagmentjava.utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
