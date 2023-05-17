@@ -32,7 +32,7 @@
                     </li>
                 </div>-->
 
-                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <!--<div sec:authorize="hasRole('ROLE_ADMIN')">
                     <li class="nav-item">
                         <a th:href="@{/admin/produits}" class="nav-link">
                             <i class="ni ni-diamond text-dark"></i> Produit
@@ -97,7 +97,7 @@
                             <i class="ni ni-delivery-fast text-blue"></i> Enlevement
                         </a>
                     </li>
-                </div>
+                </div>-->
 
                 <!--<li class="nav-item">
                     <a class="nav-link" href="./examples/profile.html">
@@ -121,13 +121,13 @@
                 </li>-->
             </ul>
             <!-- Divider -->
-            <div sec:authorize="hasRole('ROLE_ADMIN')">
+          <!--  <div sec:authorize="hasRole('ROLE_ADMIN')">
             <hr class="my-3">
 
-            <!-- Heading -->
+            &lt;!&ndash; Heading &ndash;&gt;
 
             <h6 class="navbar-heading text-muted">Administration</h6>
-            <!-- Navigation -->
+            &lt;!&ndash; Navigation &ndash;&gt;
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
                     <a th:href="@{/admin/users}" class="nav-link" >
@@ -150,7 +150,7 @@
                     </a>
                 </li>
             </ul>
-            </div>
+            </div>-->
         </div>
     </div>
 </nav>
@@ -169,7 +169,7 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                       <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="../../../asset/brand/team-4-800x800.jpg">
+                        <img alt="Image placeholder" src="../../../asset/brand/user.jpg">
                       </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <span th:utext="${#request.userPrincipal.name}" class="mb-0 text-sm  font-weight-bold"></span>

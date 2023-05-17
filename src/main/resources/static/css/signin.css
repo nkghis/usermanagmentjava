@@ -12,6 +12,7 @@ body {
     padding-bottom: 40px;
     background-color: rgba(245, 152, 102, 0);
     background-image: url("../asset/brand/background.jpg");
+    background-size: cover;
 }
 
 .form-signin {
