@@ -22,7 +22,7 @@ public class UsermanagmentjavaApplication {
 
 
 
-		String p = "123";
+/*		String p = "123";
 		String password = EncrytedPasswordUtils.encrytePassword(p);
 
 		System.out.println("===============DEBUT TRANSACTION=======================");
@@ -50,7 +50,7 @@ public class UsermanagmentjavaApplication {
 		userRoleRepository.save(new UserRole(user2,roleuser));
 
 
-		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&FIN DE LA TRANSACTION&&&&&&&&&&&&&&&&&&&");
+		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&FIN DE LA TRANSACTION&&&&&&&&&&&&&&&&&&&");*/
 
 
 
