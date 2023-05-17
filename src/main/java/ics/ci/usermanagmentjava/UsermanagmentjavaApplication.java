@@ -1,6 +1,13 @@
 package ics.ci.usermanagmentjava;
 
 
+import ics.ci.usermanagmentjava.entity.AppRole;
+import ics.ci.usermanagmentjava.entity.AppUser;
+import ics.ci.usermanagmentjava.entity.UserRole;
+import ics.ci.usermanagmentjava.repository.RoleRepository;
+import ics.ci.usermanagmentjava.repository.UserRepository;
+import ics.ci.usermanagmentjava.repository.UserRoleRepository;
+import ics.ci.usermanagmentjava.utils.EncrytedPasswordUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -15,17 +22,14 @@ public class UsermanagmentjavaApplication {
 
 
 
-		/*String p = "123";
+		String p = "123";
 		String password = EncrytedPasswordUtils.encrytePassword(p);
 
 		System.out.println("===============DEBUT TRANSACTION=======================");
 		UserRepository userRepository = ctx.getBean(UserRepository.class);
 		AppUser user1 = userRepository.save(new AppUser("admin",password,true));
 		AppUser user2 = userRepository.save(new AppUser("user",password,true));
-		AppUser userHopitalVallons = userRepository.save(new AppUser("hvallons",password,true));
-		AppUser userHopitalRosier = userRepository.save(new AppUser("hrosiers",password,true));
-		AppUser userPharmacieVallons = userRepository.save(new AppUser("pvallons",password,true));
-		AppUser userPharmacieStLuc = userRepository.save(new AppUser("pstluc",password,true));
+
 		System.out.println("===============AJOUT CLIENT=======================");
 		userRepository.findAll().forEach(u->System.out.println(u.getUserName()));
 		System.out.println("Utilisateurs ajoutés avec succes");
@@ -34,8 +38,7 @@ public class UsermanagmentjavaApplication {
 		RoleRepository roleRepository = ctx.getBean(RoleRepository.class);
 		AppRole roleadmin = roleRepository.save(new AppRole("ROLE_ADMIN"));
 		AppRole roleuser = roleRepository.save(new AppRole("ROLE_USER"));
-		AppRole rolePharmacie = roleRepository.save(new AppRole("ROLE_PHARMACIE"));
-		AppRole roleHopital = roleRepository.save(new AppRole("ROLE_HOPITAL"));
+
 		roleRepository.findAll().forEach(u->System.out.println(u.getRoleName()));
 		System.out.println("Roles ajoutés avec succes");
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -45,12 +48,9 @@ public class UsermanagmentjavaApplication {
 		userRoleRepository.save(new UserRole(user1,roleadmin));
 		userRoleRepository.save(new UserRole(user1,roleuser));
 		userRoleRepository.save(new UserRole(user2,roleuser));
-		userRoleRepository.save(new UserRole(userHopitalVallons,roleHopital));
-		userRoleRepository.save(new UserRole(userHopitalRosier,roleHopital));
-		userRoleRepository.save(new UserRole(userPharmacieVallons,rolePharmacie));
-		userRoleRepository.save(new UserRole(userPharmacieStLuc,rolePharmacie));
 
-		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&FIN DE LA TRANSACTION&&&&&&&&&&&&&&&&&&&");*/
+
+		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&FIN DE LA TRANSACTION&&&&&&&&&&&&&&&&&&&");
 
 
 
