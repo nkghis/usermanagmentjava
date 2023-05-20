@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Getter
@@ -33,8 +34,21 @@ public class AppUser {
     private boolean enabled;
 
     @OneToMany(mappedBy = "appUser")
-    private Collection<UserRole> userRoles;
+    private List<UserRole> userRoles;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "role_id"))
+
+
+    private List<AppRole> roles;
+
+    @Transient
+    private String mesroles;
 
 
     public AppUser(String userName, String encrytedPassword, boolean enabled) {
