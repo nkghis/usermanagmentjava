@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -36,16 +37,15 @@ public class AppUser {
     @OneToMany(mappedBy = "appUser")
     private List<UserRole> userRoles;
 
-    @ManyToMany
+    //Many to many best way to get Chield field, if got one record check order of @Joincolumn name, look Table on database to see good order
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "user_id"),
+                    name = "user_id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "role_id"))
-
-
-    private List<AppRole> roles;
+                    name = "role_id"))
+    private Set<AppRole> roles;
 
     @Transient
     private String mesroles;

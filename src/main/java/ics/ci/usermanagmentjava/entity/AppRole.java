@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -26,9 +27,12 @@ public class AppRole {
 
 
 
+
     public AppRole(String roleName) {
         this.roleName = roleName;
     }
+
+
 
 
 

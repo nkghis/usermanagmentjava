@@ -24,6 +24,9 @@ public class UsermanagmentjavaApplication {
 
 		ApplicationContext ctx = SpringApplication.run(UsermanagmentjavaApplication.class, args);
 
+		UserRepository userRepository = ctx.getBean(UserRepository.class);
+		AppUser user = userRepository.findByUserName("admin");
+		String s ="";
 
 		/*UserRepository userRepository = ctx.getBean(UserRepository.class);
 		AppUser user = userRepository.findByUserName("admin");
