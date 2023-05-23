@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Slf4j
@@ -71,7 +72,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<AppRole> getRolesByUser(AppUser user) {
-        List<UserRole> userroles = user.getUserRoles();
+        Collection<UserRole> userroles = user.getUserRoles();
         List<AppRole> roles = new ArrayList<AppRole>();
         for (UserRole userrole :userroles){
             AppRole r = userrole.getAppRole();

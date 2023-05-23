@@ -34,8 +34,8 @@ public class AppUser {
     @Column(name = "Enabled", length = 1, nullable = false)
     private boolean enabled;
 
-    @OneToMany(mappedBy = "appUser")
-    private List<UserRole> userRoles;
+    @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER)
+    private Collection<UserRole> userRoles;
 
     //Many to many best way to get Chield field, if got one record check order of @Joincolumn name, look Table on database to see good order
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -45,7 +45,7 @@ public class AppUser {
                     name = "user_id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id"))
-    private Set<AppRole> roles;
+    private Collection<AppRole> roles;
 
     @Transient
     private String mesroles;
